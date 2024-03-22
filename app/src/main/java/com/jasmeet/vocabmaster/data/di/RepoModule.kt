@@ -21,8 +21,11 @@ object RepoModule {
 
 @Provides
 @Singleton
-fun provideDogsRepository(apiService: WordsApiService): WordsRepository =
-    WordsRepositoryImpl(apiService)
+fun provideDogsRepository(
+    apiService: WordsApiService,
+    dao: CachedWordsDao
+): WordsRepository =
+    WordsRepositoryImpl(apiService, dao)
 
 @Provides
 @Singleton

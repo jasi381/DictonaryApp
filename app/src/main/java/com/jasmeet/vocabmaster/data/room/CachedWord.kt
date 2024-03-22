@@ -6,8 +6,7 @@ import com.jasmeet.vocabmaster.data.models.WordItem
 
 @Entity
 data class CachedWord(
-
-    @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
-//    val wordItems: List<WordItem>
+    @PrimaryKey
+    val id: Long,
+    val wordJson: String
 )

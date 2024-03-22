@@ -6,13 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jasmeet.vocabmaster.data.models.Word
+import com.jasmeet.vocabmaster.data.room.CachedWordsDao
 import com.jasmeet.vocabmaster.domain.GetWordsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WordsViewModel @Inject constructor(private val getWordsUseCase: GetWordsUseCase) : ViewModel() {
+class WordsViewModel @Inject constructor(
+    private val getWordsUseCase: GetWordsUseCase,
+    private val wordDao: CachedWordsDao
+) : ViewModel() {
 
     private val _words = MutableLiveData<Word>()
     val words: LiveData<Word> get() = _words
